@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:4.7.12
+FROM tyhal/continuumio-miniconda3:4.8.2
 
 RUN conda install --yes \
     -c conda-forge \
@@ -17,7 +17,7 @@ RUN conda install --yes \
     && find /opt/conda/lib/python*/site-packages/bokeh/server/static -type f,l -name '*.js' -not -name '*.min.js' -delete \
     && rm -rf /opt/conda/pkgs
 
-COPY prepare.sh /usr/bin/prepare.sh
+COPY base/prepare.sh /usr/bin/prepare.sh
 
 RUN mkdir /opt/app
 
